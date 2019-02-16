@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>Gitbook Downloader</title>
+</head>
+<body style="text-align: center;">
+    <h1>Gitbook Downloader</h1>
+    <p>Download Gitbook Books in PDF file.</p>
+    <label>Writer</label><input type="text" id="writer" style="width: 80%;">
+    <label>Book Name</label><input type="text" id="book" style="width: 80%;">
+    <button onclick="downloadBook()"><h2>Download</h2></button>
+    <script>
+    function downloadBook() {
+        var a = document.createElement("a");
+        a.href = "https://legacy.gitbook.com/download/pdf/book/" + document.getElementById("writer").value + "/" + document.getElementById("book").value;
+        a.click();
+    }
+    </script>
+</body>
+</html>
