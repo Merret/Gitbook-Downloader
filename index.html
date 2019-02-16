@@ -1,13 +1,14 @@
 <html>
 <head>
     <title>Gitbook Downloader</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body style="text-align: center;">
     <h1>Gitbook Downloader</h1>
     <p>Download Gitbook Books in PDF file.</p>
     <label>Writer</label><input type="text" id="writer" style="width: 80%;"><br>
     <label>Book Name</label><input type="text" id="book" style="width: 80%;"><br>
-    <button onclick="downloadBook()"><h2>Download</h2></button>
+    <button onclick="downloadBook()">Download</button>
     <script>
     function downloadBook() {
         var a = document.createElement("a");
