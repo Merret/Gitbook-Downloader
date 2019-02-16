@@ -6,16 +6,24 @@
 <body style="text-align: center;">
     <h1>Gitbook Downloader</h1>
     <p>Download Gitbook Books in PDF file.</p>
-    <label>Writer</label><input type="text" id="writer" style="width: 80%;"><br>
-    <label>Book Name</label><input type="text" id="book" style="width: 80%;"><br>
-    <button onclick="downloadBook()">Download</button>
+    <label style="font-size: 1.2rem;">Writer: </label><input type="text" id="writer" style="width: 80%;max-width: 30rem;font-size: 1.2rem;"><br>
+    <label style="font-size: 1.2rem;">Book Name: </label><input type="text" id="book" style="width: 80%;max-width: 30rem;font-size: 1.2rem;"><br>
+    <button onclick="downloadBook()" style="font-size: 1.2rem;">Download</button>
     <script>
-    function downloadBook() {
-        var a = document.createElement("a");
-        a.href = "https://legacy.gitbook.com/download/pdf/book/" + document.getElementById("writer").value + "/" + document.getElementById("book").value;
-        a.click();
-        alert("Download Started!");
-    }
+        function downloadBook() {
+            var a = document.createElement("a");
+            a.href = "https://legacy.gitbook.com/download/pdf/book/" + document.getElementById("writer").value + "/" + document.getElementById("book").value;
+            a.click();
+            alert("Download Started!");
+        }
+        function urlPraser(url) {
+            var w, b;
+            if(url.includes(".gitbooks.io")) {
+                w = url.substring(url.search("https://")+8, url.search(".gitbooks.io"));
+                b = url.substr(url.search(".gitbooks.io")+13, url.substring(url.search(".gitbooks.io")+13).search("/"));
+            }
+            return [w, b];
+        }
     </script>
 </body>
 </html>
