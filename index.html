@@ -10,11 +10,11 @@
     <p>OR</p>
     <label style="font-size: 1.2rem;">Writer: </label><input type="text" id="writer" style="width: 80%;max-width: 30rem;font-size: 1.2rem;"><br>
     <label style="font-size: 1.2rem;">Book Name: </label><input type="text" id="book" style="width: 80%;max-width: 30rem;font-size: 1.2rem;"><br>
-    <button onclick="downloadBook()" style="font-size: 1.2rem;">Download</button>
+    <button onclick="checkMethod()" style="font-size: 1.2rem;">Download</button>
     <script>
-        function downloadBook() {
+        function downloadBook(w, b) {
             var a = document.createElement("a");
-            a.href = "https://legacy.gitbook.com/download/pdf/book/" + document.getElementById("writer").value + "/" + document.getElementById("book").value;
+            a.href = "https://legacy.gitbook.com/download/pdf/book/" + w + "/" + b;
             a.click();
             alert("Download Started!");
         }
@@ -25,6 +25,16 @@
                 b = url.substr(url.search(".gitbooks.io")+13, url.substring(url.search(".gitbooks.io")+13).search("/"));
             }
             return [w, b];
+        }
+        function checkMethod() {
+            if(document.getElementById("url").value) {
+                var d = urlPraser(document.getElementById("url").value);
+                downloadBook(d[0], d[1]);
+            } else if(document.getElementById("writer").value && document.getElementById("book").value) {
+                downloadBook(document.getElementById("writer").value, document.getElementById("book").value);
+            } else {
+                alert("FAILED");
+            }
         }
     </script>
 </body>
